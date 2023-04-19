@@ -442,21 +442,56 @@ end)
 
 RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventory, other)
     if not IsEntityDead(PlayerPedId()) then
-        ToggleHotbar(false)
-        SetNuiFocus(true, true)
-        if other then
-            currentOtherInventory = other.name
+        if Config.Progressbar.Enable then
+            QBCore.Functions.Progressbar('open_inventory', 'Opening Inventory...', math.random(Config.Progressbar.minT, Config.Progressbar.maxT), false, true, { -- Name | Label | Time | useWhileDead | canCancel
+                disableMovement = false,
+                disableCarMovement = false,
+                disableMouse = false,
+                disableCombat = false,
+            }, {}, {}, {}, function() -- Play When Done
+                ToggleHotbar(false)
+                SetNuiFocus(true, true)
+                if other then
+                    currentOtherInventory = other.name
+                end
+                player = PlayerId()
+                SendNUIMessage({
+                    action = "open",
+                    inventory = inventory,
+                    slots = Config.MaxInventorySlots,
+                    other = other,
+                    maxweight = Config.MaxInventoryWeight,
+                    Ammo = PlayerAmmo,
+                    maxammo = Config.MaximumAmmoValues,
+                    id = GetPlayerServerId(player),
+                    playername = PlayerData.charinfo.firstname .. ' ' .. PlayerData.charinfo.lastname,
+                    helth = GetEntityHealth(PlayerPedId()),
+                    armor = GetPedArmour(PlayerPedId()),
+                    hunger = QBCore.Functions.GetPlayerData().metadata["hunger"],
+                    thirst = QBCore.Functions.GetPlayerData().metadata["thirst"],
+                    stress = QBCore.Functions.GetPlayerData().metadata["stress"],
+                })
+                inInventory = true
+            end, function() -- Play When Cancel
+            end)
+        else
+            ToggleHotbar(false)
+            SetNuiFocus(true, true)
+            if other then
+                currentOtherInventory = other.name
+            end
+            SendNUIMessage({
+                action = "open",
+                inventory = inventory,
+                slots = Config.MaxInventorySlots,
+                other = other,
+                maxweight = Config.MaxInventoryWeight,
+                Ammo = PlayerAmmo,
+                maxammo = Config.MaximumAmmoValues,
+            })
+            inInventory = true
         end
-        SendNUIMessage({
-            action = "open",
-            inventory = inventory,
-            slots = Config.MaxInventorySlots,
-            other = other,
-            maxweight = Config.MaxInventoryWeight,
-            Ammo = PlayerAmmo,
-            maxammo = Config.MaximumAmmoValues,
-        })
-        inInventory = true
+
     end
 end)
 
@@ -759,20 +794,25 @@ RegisterCommand('inventory', function()
                     maxweight = maxweight,
                     slots = slots,
                 }
+                SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
                 TriggerServerEvent("inventory:server:OpenInventory", "trunk", CurrentVehicle, other)
                 OpenTrunk()
             elseif CurrentGlovebox then
+                SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
                 TriggerServerEvent("inventory:server:OpenInventory", "glovebox", CurrentGlovebox)
             elseif CurrentDrop ~= 0 then
+                SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
                 TriggerServerEvent("inventory:server:OpenInventory", "drop", CurrentDrop)
             elseif VendingMachine then
                 local ShopItems = {}
                 ShopItems.label = "Vending Machine"
                 ShopItems.items = Config.VendingItem
                 ShopItems.slots = #Config.VendingItem
+                SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
                 TriggerServerEvent("inventory:server:OpenInventory", "shop", "Vendingshop_"..math.random(1, 99), ShopItems)
             else
                 openAnim()
+                SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
                 TriggerServerEvent("inventory:server:OpenInventory")
             end
         end
@@ -860,6 +900,7 @@ RegisterNUICallback('getCombineItem', function(data, cb)
 end)
 
 RegisterNUICallback("CloseInventory", function(_, cb)
+    local ped = PlayerPedId()
     if currentOtherInventory == "none-inv" then
         CurrentDrop = nil
         CurrentVehicle = nil
@@ -872,15 +913,19 @@ RegisterNUICallback("CloseInventory", function(_, cb)
     end
     if CurrentVehicle ~= nil then
         CloseTrunk()
+        SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
         TriggerServerEvent("inventory:server:SaveInventory", "trunk", CurrentVehicle)
         CurrentVehicle = nil
     elseif CurrentGlovebox ~= nil then
+        SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
         TriggerServerEvent("inventory:server:SaveInventory", "glovebox", CurrentGlovebox)
         CurrentGlovebox = nil
     elseif CurrentStash ~= nil then
+        SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
         TriggerServerEvent("inventory:server:SaveInventory", "stash", CurrentStash)
         CurrentStash = nil
     else
+        SetCurrentPedWeapon(ped, GetHashKey("WEAPON_UNARMED"), true)
         TriggerServerEvent("inventory:server:SaveInventory", "drop", CurrentDrop)
         CurrentDrop = nil
     end
