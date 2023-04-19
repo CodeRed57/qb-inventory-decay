@@ -5,6 +5,8 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css"/>
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <!-- Google Fonts -->
@@ -17,13 +19,53 @@
     <body style="background-color: rgba(0,0,0,0); font-family: 'Roboto', sans-serif !important;">
         <div id="qbcore-inventory">
             <div class="inventory-info">
-                <div class="player-inv-info">
-                    <span id="player-inv-label">Player Inventory</span><br>
+                <<div class="player-inv-info">
+                    <span class="namejs" id="player-inv-label">Player</span><br>
+                        <div style="margin-left:4%;width:97%">
+                            <div id="progressbar">
+                                <div class="pro"></div>
+                            </div>
+                        </div>
                     <span id="player-inv-weight"></span>
                 </div>
                 <div class="other-inv-info">
                     <span id="other-inv-label"></span><br>
+                    <div style="margin-left:4%;width:97%">
+                        <div id="progressbar">
+                            <div class="pro1"></div>
+                        </div>
+                    </div>
                     <span id="other-inv-weight"></span>
+                </div>
+            </div>
+            <div class="ammo-container">
+                <div class="ammo-container-header">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="ammo-box" id="helth">
+                    <div class="ammo-box-amount"></div>
+                    <i class="far fa-heart"></i>
+                    <div class="ammo-box2" id="helth"></div><span>0x</span>
+                </div>
+                <div class="ammo-box" id="armor">
+                    <div class="ammo-box-amount"></div>
+                    <i class="far fa-shield-alt"></i>
+                    <div class="ammo-box2" id="armor"></div><span>0x</span>
+                </div>
+                <div class="ammo-box" id="hunger">
+                    <div class="ammo-box-amount"></div>
+                    <i class="far fa-hamburger"></i>
+                    <div class="ammo-box2" id="hunger"></div><span>0x</span>
+                </div>
+                <div class="ammo-box" id="thirst">
+                    <div class="ammo-box-amount"></div>
+                    <i class="far fa-wine-bottle"></i>
+                    <div class="ammo-box2" id="thirst"></div><span>0x</span>
+                </div>
+                <div class="ammo-box" id="stress">
+                    <div class="ammo-box-amount"></div>
+                    <i class="far fa-brain"></i>
+                    <div class="ammo-box2" id="stress"></div><span>0x</span>
                 </div>
             </div>
             <div class="inv-container">
@@ -32,7 +74,7 @@
                 </div>
                 <div class="inv-options">
                     <div class="inv-options-list">
-                        <input type="number" id="item-amount" class="inv-option-item" min=1 max="10000" placeholder="Amount" pattern="[0-9]" onfocus="this.value=''" placeholder="" oninput="validity.valid||(value='');"></input>
+                        <input type="number" id="item-amount" class="inv-option-item" min=1 max="10000" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" placeholder="Amount" pattern="[0-9]" onfocus="this.value=''" placeholder="" oninput="validity.valid||(value='');"></input>
                         <div class="inv-option-item" id="item-use"><p>USE</p></div>
                         <div class="inv-option-item" id="item-give"><p>GIVE</p></div>
                         <div class="inv-option-item" id="inv-close"><p>CLOSE</p></div>
