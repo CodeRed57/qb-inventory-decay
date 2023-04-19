@@ -1,4 +1,4 @@
-Config = {}
+Config = Config or {}
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 
@@ -23,6 +23,12 @@ Config.VendingObjects = {
 
 Config.BinObjects = {
     "prop_bin_05a",
+}
+
+Config.Progressbar = {
+    Enable = true,         -- True to Enable the progressbar while opening inventory
+    minT = 350,             -- Min Time for Inventory to open
+    maxT = 500              -- Max Time for Inventory to open
 }
 
 Config.CraftingObject = `prop_toolchest_05`
