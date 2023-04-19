@@ -12,6 +12,14 @@ var disableRightMouse = false;
 var selectedItem = null;
 var IsDragging = false;
 
+ // ----- Block the "COMMA" for all inputs.
+document.addEventListener('keydown', function(e) {
+    if (e.key === '.') {
+        e.preventDefault();
+        return false;
+        }
+     })
+
 $(document).on("keydown", function() {
     if (event.repeat) {
         return;
@@ -565,7 +573,7 @@ function FormatItemInfo(itemData) {
             var str = ""+ itemData.info.cardNumber + "";
             var res = str.slice(12);
             var cardNumber = "************" + res;
-            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');			
+            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
         } else if (itemData.name == "labkey") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p>");
@@ -966,39 +974,23 @@ function updateweights($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
         }
     }
 
-    if (
-        totalWeight > playerMaxWeight ||
-        (totalWeightOther > otherMaxWeight &&
-            $fromInv.attr("data-inventory").split("-")[0] != "itemshop" &&
-            $fromInv.attr("data-inventory") != "crafting")
-    ) {
+    if (totalWeight > playerMaxWeight || (totalWeightOther > otherMaxWeight && $fromInv.attr("data-inventory").split("-")[0] != "itemshop" && $fromInv.attr("data-inventory") != "crafting")) {
         InventoryError($fromInv, $fromSlot);
         return false;
     }
-
-    $("#player-inv-weight").html(
-        "⚖️: " +
-        (parseInt(totalWeight) / 1000).toFixed(2) +
-        " / " +
-        (playerMaxWeight / 1000).toFixed(2)
-    );
-    if (
-        $fromInv.attr("data-inventory").split("-")[0] != "itemshop" &&
-        $toInv.attr("data-inventory").split("-")[0] != "itemshop" &&
-        $fromInv.attr("data-inventory") != "crafting" &&
-        $toInv.attr("data-inventory") != "crafting"
-    ) {
-        $("#other-inv-label").html(otherLabel);
-        $("#other-inv-weight").html(
-            "⚖️: " +
-            (parseInt(totalWeightOther) / 1000).toFixed(2) +
-            " / " +
-            (otherMaxWeight / 1000).toFixed(2)
-        );
+    var per =(totalWeight/1000)/(playerMaxWeight/100000)
+    $(".pro").css("width",per+"%");
+    $("#player-inv-weight").html("Weight:" + (parseInt(totalWeight) / 1000).toFixed(2) + " / " + (playerMaxWeight / 1000).toFixed(2));
+    if ($fromInv.attr("data-inventory").split("-")[0] != "itemshop" && $toInv.attr("data-inventory").split("-")[0] != "itemshop" && $fromInv.attr("data-inventory") != "crafting" && $toInv.attr("data-inventory") != "crafting") {
+        $("#other-inv-label").html(otherLabel)
+        $("#other-inv-weight").html("Weight:" + (parseInt(totalWeightOther) / 1000).toFixed(2) + " / " + (otherMaxWeight / 1000).toFixed(2))
+        var per1 =(totalWeightOther/1000)/(otherMaxWeight/100000)
+        $(".pro1").css("width",per1+"%");
     }
 
     return true;
 }
+
 
 var combineslotData = null;
 
@@ -1425,7 +1417,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             .html(qualityLabel);
                     }
                 }
-				
+
                 $fromInv
                     .find("[data-slot=" + $fromSlot + "]")
                     .data("item", newDataFrom);
@@ -1573,7 +1565,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
             );
         } else {
             if (fromData.amount == $toAmount) {
-                if (toData && toData.unique){            
+                if (toData && toData.unique){
                     InventoryError($fromInv, $fromSlot);
                     return;
                 }
@@ -2306,9 +2298,16 @@ var requiredItemOpen = false;
         totalWeight = 0;
         totalWeightOther = 0;
 
+        var v = data
+        var gg = 100
         $(".player-inventory").find(".item-slot").remove();
-        $(".ply-hotbar-inventory").find(".item-slot").remove();
-
+         $(".ply-hotbar-inventory").find(".item-slot").remove();
+         $('.namejs').html('<i class="far fa-address-card"></i> ' +(v.id).toFixed(0))//show ID, Name and Cash
+         $("#helth").find('span').html((data.helth).toFixed(0)-gg+"%");
+         $("#armor").find('span').html((data.armor).toFixed(0)+"%");
+         $("#hunger").find('span').html((data.hunger).toFixed(0)+"%");
+         $("#thirst").find('span').html((data.thirst).toFixed(0)+"%");
+         $("#stress").find('span').html((data.stress).toFixed(0)+"%");
         if (requiredItemOpen) {
             $(".requiredItem-container").hide();
             requiredItemOpen = false;
@@ -2511,64 +2510,53 @@ var requiredItemOpen = false;
             });
         }
 
-        $("#player-inv-weight").html(
-            "⚖️: " +
-            (totalWeight / 1000).toFixed(2) +
-            " / " +
-            (data.maxweight / 1000).toFixed(2)
-        );
+        var per =(totalWeight/1000)/(data.maxweight/100000)
+        $(".pro").css("width",per+"%");
+        $("#player-inv-weight").html("Weight: " + (totalWeight / 1000).toFixed(2) + " / " + (data.maxweight / 1000).toFixed(2) + " lbs");
         playerMaxWeight = data.maxweight;
-        if (data.other != null) {
-            var name = data.other.name.toString();
-            if (
-                name != null &&
-                (name.split("-")[0] == "itemshop" || name == "crafting")
-            ) {
+        if (data.other != null)
+        {
+            var name = data.other.name.toString()
+            if (name != null && (name.split("-")[0] == "itemshop" || name == "crafting")) {
                 $("#other-inv-label").html(data.other.label);
             } else {
-                $("#other-inv-label").html(data.other.label);
-                $("#other-inv-weight").html(
-                    "⚖️: " +
-                    (totalWeightOther / 1000).toFixed(2) +
-                    " / " +
-                    (data.other.maxweight / 1000).toFixed(2)
-                );
+                $("#other-inv-label").html(data.other.label)
+                $("#other-inv-weight").html("Weight: " + (totalWeightOther / 1000).toFixed(2) + " / " + (data.other.maxweight / 1000).toFixed(2) + " lbs")
+                var per12 =(totalWeightOther/1000)/(data.other.maxweight/100000)
+                $(".pro1").css("width",per12+"%");
             }
             otherMaxWeight = data.other.maxweight;
             otherLabel = data.other.label;
         } else {
-            $("#other-inv-label").html(Inventory.droplabel);
-            $("#other-inv-weight").html(
-                "⚖️: " +
-                (totalWeightOther / 1000).toFixed(2) +
-                " / " +
-                (Inventory.dropmaxweight / 1000).toFixed(2)
-            );
+            $("#other-inv-label").html(Inventory.droplabel)
+            $("#other-inv-weight").html("Weight: " + (totalWeightOther / 1000).toFixed(2) + " / " + (Inventory.dropmaxweight / 1000).toFixed(2) + " lbs")
+            var per123 =(totalWeightOther/1000)/(Inventory.dropmaxweight/100000)
+            $(".pro1").css("width",per123+"%");
             otherMaxWeight = Inventory.dropmaxweight;
             otherLabel = Inventory.droplabel;
         }
 
-        $.each(data.maxammo, function(index, ammotype) {
-            $("#" + index + "_ammo")
-                .find(".ammo-box-amount")
-                .css({ height: "0%" });
+        $.each(data.maxammo, function(index, ammotype){
+            $("#"+index+"_ammo").find('.ammo-box-amount').css({"height":"0%"});
         });
 
         if (data.Ammo !== null) {
-            $.each(data.Ammo, function(i, amount) {
+            $.each(data.Ammo, function(i, amount){
                 var Handler = i.split("_");
                 var Type = Handler[1].toLowerCase();
                 if (amount > data.maxammo[Type]) {
-                    amount = data.maxammo[Type];
+                    amount = data.maxammo[Type]
                 }
-                var Percentage = (amount / data.maxammo[Type]) * 100;
-
-                $("#" + Type + "_ammo")
-                    .find(".ammo-box-amount")
-                    .css({ height: Percentage + "%" });
-                $("#" + Type + "_ammo")
-                    .find("span")
-                    .html(amount + "x");
+                var Percentage = (amount / data.maxammo[Type] * 100)
+                if (Type == "craftingrep" || Type == "drugs") {
+                    $("#"+Type+"").find('.ammo-box-amount').css({"height":Percentage+"%"});
+                    $("#"+Type+"").find('span').html("<p>"+data.craftingrep+"/"+data.craftingrep+"</p>");
+                } else {
+                    $("#"+Type+"_ammo").find('.ammo-box-amount').css({"height":Percentage+"%"});
+                    $("#"+Type+"_ammo").find('span').html(amount+"x");
+                }
+                $("#"+Type+"_ammo").find('.ammo-box-amount').css({"height":Percentage+"%"});
+                $("#"+Type+"_ammo").find('span').html(amount+"x");
             });
         }
 
@@ -2700,13 +2688,9 @@ var requiredItemOpen = false;
             }
         });
 
-        $("#player-inv-weight").html(
-            "⚖️: " +
-            (totalWeight / 1000).toFixed(2) +
-            " / " +
-            (data.maxweight / 1000).toFixed(2)
-        );
-
+        var per =(totalWeight/1000)/(data.maxweight/100000)
+        $(".pro").css("width",per+"%");
+        $("#player-inv-weight").html("Weight: " + (totalWeight / 1000).toFixed(2) + " / " + (data.maxweight / 1000).toFixed(2) + " lbs");
         handleDragDrop();
     };
 
