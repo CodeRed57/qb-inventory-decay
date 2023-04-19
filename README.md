@@ -28,12 +28,6 @@
 
 ## Screenshots
 ![General](https://i.imgur.com/GR0MDFN.png)
-![ID Card](https://i.imgur.com/C6gAOWi.png)
-![Weapon](https://i.imgur.com/RbCvHJb.png)
-![Shop](https://i.imgur.com/7Da7UEX.png)
-![Crafting](https://i.imgur.com/peONaL9.png)
-![Glovebox](https://i.imgur.com/LjDEYWa.png)
-![Trunk](https://i.imgur.com/IoGYZbv.png)
 
 ## Features
 - Item crafting
@@ -61,12 +55,17 @@ ensure qb-shops
 
 ## Configuration
 ```
-Config = {}
+Config = Config or {}
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 
 Config.MaxInventoryWeight = 120000 -- Max weight a player can carry (default 120kg, written in grams)
 Config.MaxInventorySlots = 41 -- Max inventory slots for a player
+
+Config.KeyBinds = {
+    Inventory = 'TAB',
+    HotBar = 'z'
+}
 
 Config.CleanupDropTime = 15 * 60 -- How many seconds it takes for drops to be untouched before being deleted
 Config.MaxDropViewDistance = 12.5 -- The distance in GTA Units that a drop can be seen
@@ -81,6 +80,12 @@ Config.VendingObjects = {
 
 Config.BinObjects = {
     "prop_bin_05a",
+}
+
+Config.Progressbar = {
+    Enable = true,         -- True to Enable the progressbar while opening inventory
+    minT = 350,             -- Min Time for Inventory to open
+    maxT = 500              -- Max Time for Inventory to open
 }
 
 Config.CraftingObject = `prop_toolchest_05`
@@ -443,4 +448,5 @@ Config.MaximumAmmoValues = {
     ["shotgun"] = 200,
     ["rifle"] = 250,
 }
+
 ```
