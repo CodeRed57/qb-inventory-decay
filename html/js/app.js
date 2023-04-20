@@ -2512,7 +2512,7 @@ var requiredItemOpen = false;
 
         var per =(totalWeight/1000)/(data.maxweight/100000)
         $(".pro").css("width",per+"%");
-        $("#player-inv-weight").html("Weight: " + (totalWeight / 1000).toFixed(2) + " / " + (data.maxweight / 1000).toFixed(2) + " lbs");
+        $("#player-inv-weight").html('<i class="fas fa-dumbbell"></i> ' + (totalWeight / 1000).toFixed(2) + " / " + (data.maxweight / 1000).toFixed(2) + " lbs");
         playerMaxWeight = data.maxweight;
         if (data.other != null)
         {
@@ -2529,7 +2529,7 @@ var requiredItemOpen = false;
             otherLabel = data.other.label;
         } else {
             $("#other-inv-label").html(Inventory.droplabel)
-            $("#other-inv-weight").html("Weight: " + (totalWeightOther / 1000).toFixed(2) + " / " + (Inventory.dropmaxweight / 1000).toFixed(2) + " lbs")
+            $("#other-inv-weight").html('<i class="fas fa-dumbbell"></i> ' + (totalWeightOther / 1000).toFixed(2) + " / " + (Inventory.dropmaxweight / 1000).toFixed(2) + " lbs")
             var per123 =(totalWeightOther/1000)/(Inventory.dropmaxweight/100000)
             $(".pro1").css("width",per123+"%");
             otherMaxWeight = Inventory.dropmaxweight;
