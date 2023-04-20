@@ -6,7 +6,17 @@ p {
 }
 
 :root {
-	--main-label-color: 3, 162, 181;
+	--CMainGr: #00f5c43c;
+	--CSecondGr: #0000003a;
+	--infolineGr: #00f5c4;
+	--progressbar: #013e416d;
+	--progressbarsc: #01413f6d;
+	--pro: #00fffb6d;
+	--prosc: #00ffee6d;
+	--durability: #025c566d;
+	--durability2: #00ffee6d;
+	--durability2sc: #00ffdd6d;
+	--durabilitysc: #0141326d;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -22,7 +32,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: rgba(255, 0, 0, 0.616);
+	background-color: var(--infolineGr);
   border-radius: 1px;
 }
 
@@ -73,6 +83,7 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: 100;
+
 }
 
 .other-inventory {
@@ -98,7 +109,7 @@ body {
 
 .player-inventory>.item-slot>.item-slot-key>p {
 	position: absolute;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	color: #ffffff;
 	padding: 0.3vh;
 	padding-left: 0.5vh;
@@ -142,7 +153,7 @@ body {
   float: left;
   margin-left: 2px;
   margin-bottom: 2px;
-  background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+  background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   /* border: 1px solid rgba(221, 0, 0, 0); */
   border-radius: 20px;
   /* border-left: 2px solid #000000; */
@@ -154,12 +165,12 @@ body {
 
 .item-slot-hoverClass {
 	/* opacity: 0.6; */
-	background: linear-gradient(to bottom right, #0000003a, #ff000099);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   }
 
   .item-slot:hover {
 	/* opacity: 0.7; */
-	background: linear-gradient(to bottom right, #0000003a, #ff000099);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   }
 
 .inv-option-item {
@@ -180,6 +191,16 @@ body {
   font-weight: bold;
   font-family: "Rajdhani", sans-serif;
   outline: none;
+}
+
+#item-amount {
+	color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 0.95vh;
+  font-weight: bold;
+  font-family: "Rajdhani", sans-serif;
+  outline: none;
+
 }
 
 .ammo-info-block {
@@ -234,7 +255,7 @@ body {
 	width: 7vw;
 	height: 5vh;
 	margin-top: 20%;
-	background: linear-gradient(to bottom right, #0000003a, #ff00005c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	border: 0px solid rgba(0, 0, 0, 0.01);
 	color: white;
 	box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
@@ -243,14 +264,14 @@ body {
 
   .inv-option-item:hover {
 	opacity: 0.9;
-	background: linear-gradient(to bottom right, #0000003a, #ff000099);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   }
 
 
   .btn-combine {
 	width: 7vw;
 	height: 5vh;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	/* border: 1px solid rgba(255, 255, 255, 0.01); */
 	color: white;
 	border-radius: 20px;
@@ -283,7 +304,7 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: linear-gradient(to bottom right, #0000003a, #ff00005f);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	min-height: 2vh;
 	height: auto;
 	border-bottom-left-radius: 20px;
@@ -347,7 +368,7 @@ body {
 }
 
 .ui-draggable-dragging {
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 }
 
 .player-inv-info {
@@ -360,10 +381,10 @@ body {
     border-radius: 20px;
 	width: 29vw;
 	margin-left: -20px;
-    background: linear-gradient(to bottom right, rgba(44, 0, 0, 0.492), #4101016d);
+	background: linear-gradient(to bottom right, var(--progressbar), var(--progressbarsc));
    }
    .pro {
-	background: linear-gradient(to bottom right, rgba(127, 0, 0, 0.492), #ff00006d);
+	background: linear-gradient(to bottom right, var(--pro), var(--prosc));
 	 width: 0%;
      height: 17px;
 	 margin-top: 18px;
@@ -371,7 +392,7 @@ body {
 
    }
    .pro1 {
-	background: linear-gradient(to bottom right, rgba(127, 0, 0, 0.492), #ff00006d);
+	background: linear-gradient(to bottom right, var(--pro), var(--prosc));
      width: 0%;
      height: 17px;
 	 margin-top: 18px;
@@ -380,7 +401,7 @@ body {
 
 #player-inv-label {
 	position: relative;
-	color: rgb(255, 0, 0);
+	color: var(--infolineGr);
 	font-size: 18px;
 	font-family: "Rajdhani", sans-serif;
 	font-weight: bold;
@@ -442,7 +463,7 @@ body {
 	width: 32vw;
   }
   .ply-iteminfo-container {
-    background: linear-gradient(to bottom right, #00000079, #ff00005a);
+    background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
     border-radius: 12px;
     color: rgba(220, 220, 220, 1);
     /* border: 1px solid rgba(255, 255, 255, 0.02); */
@@ -467,7 +488,7 @@ body {
 	font-family: "Rajdhani", sans-serif;
 	display: none;
 	position: absolute;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	border-radius: 20px;
 	bottom: 3%;
 	margin: 0 auto;
@@ -489,7 +510,7 @@ body {
 	position: absolute;
     font-family: 'Roboto', sans-serif !important;
     width: 85%;
-    background-color: #cf070796;
+    background-color: var(--infolineGr);
     height: 0.13vh;
 	border-radius: 12px;
   }
@@ -525,7 +546,7 @@ body {
 	margin-right: 1vh;
 	width: 6vw;
 	height: 13.1vh;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	/* border: 1px solid rgba(0, 254, 4, 0); */
 	box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
 	border-radius: 20px;
@@ -533,7 +554,7 @@ body {
 
   #itembox-action {
 	position: absolute;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	padding: 4px;
@@ -550,7 +571,7 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	height: 33px;
 	border-radius: 0px 0px 20px 20px;
 	/* border-bottom-right-radius: 7px; */
@@ -592,7 +613,7 @@ body {
 	width: 120px;
 	height: 150px;
 	border-radius: 20px;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	/* border: 1px solid rgba(221, 0, 0, 0); */
 	box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
 	float: left;
@@ -615,7 +636,7 @@ body {
 	bottom: 0;
 	width: 100%;
 	border-radius: 0px 0px 20px 20px;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	height: 21px;
   }
 
@@ -640,7 +661,7 @@ body {
 
   .z-hotbar-inventory > .z-hotbar-item-slot > .z-hotbar-item-slot-key p {
 	position: absolute;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	color: #000000;
 	padding: 0.3vh;
 	padding-left: 0.5vh;
@@ -662,7 +683,7 @@ body {
   float: left;
   margin-left: 2px;
   margin-bottom: 2px;
-  background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+  background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   /* border: 1px solid rgba(221, 0, 0, 0); */
   box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
   border-radius: 20px;
@@ -688,7 +709,7 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* background: linear-gradient(to bottom right, #0000003a, #ff00003c); */
+  /* background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr)); */
   min-height: 2.2vh;
   height: fit-content;
 }
@@ -735,7 +756,7 @@ body {
     width: 100%;
 	margin-top: 0.1vh;
     height: 5vh;
-	background: linear-gradient(to bottom right, #00000082, #ff000079);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
     text-align: center;
     color: rgb(255, 255, 255);
     border-radius: 15px;
@@ -758,7 +779,7 @@ body {
     height: 6vh;
     top: 0vh;
 	float: left;
-    background: linear-gradient(to bottom right, #00000082, #ff000079);
+    background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
     margin-bottom: .5vh;
     margin-top: 2.8vh;
     border-radius: 15px;
@@ -781,12 +802,12 @@ body {
 
 .ammo-box-hoverClass {
 	/* opacity: 0.6; */
-	background: linear-gradient(to bottom right, #0000003a, #ff000099);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   }
 
   .ammo-box:hover {
 	/* opacity: 0.7; */
-	background: linear-gradient(to bottom right, #0000003a, #ff000099);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
   }
 
 .ammo-box > img {
@@ -851,7 +872,7 @@ body {
 	left: -100vw;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 }
 
 .weapon-attachments-container-title {
@@ -883,7 +904,7 @@ body {
 .weapon-attachments-container-detail-durability {
 	height: 1.5vh;
 	width: 10vh;
-	background: linear-gradient(to bottom right, rgba(44, 0, 0, 0.492), #4101016d);
+	background: linear-gradient(to bottom right, var(--durability), var(--durabilitysc));
 	border-radius: 20px;
 }
 
@@ -891,7 +912,7 @@ body {
 	height: 100%;
 	width: 50%;
 	border-radius: 20px;
-	background: linear-gradient(to bottom right, rgba(127, 0, 0, 0.492), #ff00006d);
+	background: linear-gradient(to bottom right, var(--durability2), var(--durability2sc));
 }
 
 .weapon-attachments-container-image {
@@ -926,14 +947,14 @@ body {
 	position: relative;
 	height: 12.5vh;
 	width: 10.5vh;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	margin-right: 1vh;
 	float: left;
 	transition: .05s linear;
 }
 
 .weapon-attachment:hover {
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	transition: .05s linear;
 }
 
@@ -941,7 +962,7 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	background-color: rgba(var(--main-label-color), 0.3);
+	background-color: rgba(var(--CMainGrr), 0.3);
 	padding: 2.1%;
 }
 
@@ -976,7 +997,7 @@ body {
 	position: absolute;
 	width: 6.5vh;
 	height: 6.5vh;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	border-radius: 20px;
 	margin: 0 auto;
 	left: 0;
@@ -1048,7 +1069,7 @@ body {
 	width: 10vh;
 	height: 6vh;
 	margin: 5vh;
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 	border-radius: 20px;
 	text-align: center;
 	line-height: 6vh;
@@ -1058,7 +1079,7 @@ body {
 }
 
 .weapon-attachments-back:hover {
-	background: linear-gradient(to bottom right, #0000003a, #ff00003c);
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
 }
 @keyframes rotate-y {
 	50% {
