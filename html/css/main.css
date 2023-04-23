@@ -6,17 +6,17 @@ p {
 }
 
 :root {
-	--CMainGr: #00f5c43c;
+	--CMainGr: #f500003c;
 	--CSecondGr: #0000003a;
-	--infolineGr: #00f5c4;
-	--progressbar: #013e416d;
-	--progressbarsc: #01413f6d;
-	--pro: #00fffb6d;
-	--prosc: #00ffee6d;
-	--durability: #025c566d;
-	--durability2: #00ffee6d;
-	--durability2sc: #00ffdd6d;
-	--durabilitysc: #0141326d;
+	--infolineGr: #f50000;
+	--progressbar: #4101016d;
+	--progressbarsc: #4101016d;
+	--pro: #ff00006d;
+	--prosc: #ff00006d;
+	--durability: #5c02026d;
+	--durability2: #ff00006d;
+	--durability2sc: #ff00006d;
+	--durabilitysc: #4101016d;
 }
 
 input[type=number]::-webkit-inner-spin-button,
