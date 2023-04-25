@@ -450,11 +450,13 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
                 disableCombat = false,
             }, {}, {}, {}, function() -- Play When Done
                 ToggleHotbar(false)
+                TriggerScreenblurFadeIn(1000)
                 SetNuiFocus(true, true)
                 if other then
                     currentOtherInventory = other.name
                 end
                 player = PlayerId()
+                PlayerJob = QBCore.Functions.GetPlayerData()
                 SendNUIMessage({
                     action = "open",
                     inventory = inventory,
@@ -467,15 +469,20 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
                     playername = PlayerData.charinfo.firstname .. ' ' .. PlayerData.charinfo.lastname,
                     helth = GetEntityHealth(PlayerPedId()),
                     armor = GetPedArmour(PlayerPedId()),
-                    hunger = QBCore.Functions.GetPlayerData().metadata["hunger"],
-                    thirst = QBCore.Functions.GetPlayerData().metadata["thirst"],
-                    stress = QBCore.Functions.GetPlayerData().metadata["stress"],
+                    hunger = PlayerData.metadata["hunger"],
+                    thirst = PlayerData.metadata["thirst"],
+                    stress = PlayerData.metadata["stress"],
+                    playerMoney = PlayerData.money['cash'],
+                    playerBank = PlayerData.money['bank'],
+                    playerBlackMoney = PlayerData.money['crypto'],
+                    playerpayment = PlayerJob.job.payment,
                 })
                 inInventory = true
             end, function() -- Play When Cancel
             end)
         else
             ToggleHotbar(false)
+            TriggerScreenblurFadeIn(1000)
             SetNuiFocus(true, true)
             if other then
                 currentOtherInventory = other.name
@@ -908,6 +915,7 @@ RegisterNUICallback("CloseInventory", function(_, cb)
         CurrentStash = nil
         SetNuiFocus(false, false)
         inInventory = false
+        TriggerScreenblurFadeOut(1000)
         ClearPedTasks(PlayerPedId())
         return
     end
@@ -929,6 +937,8 @@ RegisterNUICallback("CloseInventory", function(_, cb)
         TriggerServerEvent("inventory:server:SaveInventory", "drop", CurrentDrop)
         CurrentDrop = nil
     end
+    Wait(50)
+    TriggerScreenblurFadeOut(1000)
     SetNuiFocus(false, false)
     inInventory = false
     cb('ok')
