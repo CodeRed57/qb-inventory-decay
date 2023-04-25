@@ -28,6 +28,8 @@
 
 ## Screenshots
 ![General](https://cdn.discordapp.com/attachments/1091083769710129152/1100269608851755089/image.png)
+![General](https://cdn.discordapp.com/attachments/1091083769710129152/1100270395342475285/image.png)
+
 
 ## Features
 - Item crafting
