@@ -6,17 +6,17 @@ p {
 }
 
 :root {
-	--CMainGr: #00f5d83c;
+	--CMainGr: #f500003c;
 	--CSecondGr: #0000003a;
-	--infolineGr: #00f5d0;
-	--progressbar: #01413c6d;
-	--progressbarsc: #0141386d;
-	--pro: #00ffc86d;
-	--prosc: #00ffc86d;
-	--durability: #025c536d;
-	--durability2: #00ffe56d;
-	--durability2sc: #00ffd06d;
-	--durabilitysc: #0141386d;
+	--infolineGr: #f50000;
+	--progressbar: #4101016d;
+	--progressbarsc: #4101016d;
+	--pro: #ff00006d;
+	--prosc: #ff00006d;
+	--durability: #5c02026d;
+	--durability2: #ff00006d;
+	--durability2sc: #ff00006d;
+	--durabilitysc: #4101016d;
 
 	--iconcolor: #ffffff;
 }
