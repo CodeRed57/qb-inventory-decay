@@ -18,54 +18,63 @@
     </head>
     <body style="background-color: rgba(0,0,0,0); font-family: 'Roboto', sans-serif !important;">
         <div id="qbcore-inventory">
+            <div class="inv-playerstats">
+                <div class="code2">
+                    <div class="playerstat-item" id="player-hp">
+                        <i class="playerstat-icon far fa-heart"><p class="playerstat-text" id="playerhp"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-armor">
+                        <i class="playerstat-icon far fa-shield-alt"><p class="playerstat-text" id="playerarmor"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-hunger">
+                        <i class="playerstat-icon far fa-hamburger"><p class="playerstat-text" id="playerhunger"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-thirst">
+                        <i class="playerstat-icon far fa-tint"><p class="playerstat-text" id="playerthirst"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-stress">
+                        <i class="playerstat-icon far fa-brain"><p class="playerstat-text" id="playerstress"></p></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inv-playerstats2">
+                <div class="code3">
+                    <div class="playerstat-item" id="player-id">
+                        <i class="playerstat-icon far fa-address-card"><p class="playerstat-text" id="playerId"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-money">
+                        <i class="playerstat-icon far fa-money-bill"><p class="playerstat-text" id="playerMoney"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-bank">
+                        <i class="playerstat-icon far fa-piggy-bank"><p class="playerstat-text" id="playerBank"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-black-money">
+                        <i class="playerstat-icon far fa-money-bill-wave"><p class="playerstat-text" id="playerBlackMoney"></p></i>
+                    </div>
+                    <div class="playerstat-item" id="player-payment">
+                        <i class="playerstat-icon far fa-credit-card"><p class="playerstat-text" id="playerpayment"></p></i>
+                    </div>
+                </div>
+            </div>
             <div class="inventory-info">
                 <<div class="player-inv-info">
-                    <span class="namejs" id="player-inv-label">Player</span><br>
-                        <div style="margin-left:4%;width:97%">
+                    <span class="playername" id="player-inv-label">Player</span><br>
+                        <div style="margin-top:4.4%;margin-left:-5%;width:97%">
                             <div id="progressbar">
+                                <span id="player-inv-weight"></span>
                                 <div class="pro"></div>
                             </div>
                         </div>
-                    <span id="player-inv-weight"></span>
                 </div>
                 <div class="other-inv-info">
                     <span id="other-inv-label"></span><br>
-                    <div style="margin-left:4%;width:97%">
+                    <div style="margin-top:4.4%;margin-left:-5%;width:97%">
                         <div id="progressbar">
+                            <span id="other-inv-weight"></span>
                             <div class="pro1"></div>
                         </div>
                     </div>
-                    <span id="other-inv-weight"></span>
-                </div>
-            </div>
-            <div class="ammo-container">
-                <div class="ammo-container-header">
-                    <i class="fas fa-road"></i>
-                </div>
-                <div class="ammo-box" id="helth">
-                    <div class="ammo-box-amount"></div>
-                    <i class="far fa-heart"></i>
-                    <div class="ammo-box2" id="helth"></div><span>0x</span>
-                </div>
-                <div class="ammo-box" id="armor">
-                    <div class="ammo-box-amount"></div>
-                    <i class="far fa-shield-alt"></i>
-                    <div class="ammo-box2" id="armor"></div><span>0x</span>
-                </div>
-                <div class="ammo-box" id="hunger">
-                    <div class="ammo-box-amount"></div>
-                    <i class="far fa-hamburger"></i>
-                    <div class="ammo-box2" id="hunger"></div><span>0x</span>
-                </div>
-                <div class="ammo-box" id="thirst">
-                    <div class="ammo-box-amount"></div>
-                    <i class="far fa-wine-bottle"></i>
-                    <div class="ammo-box2" id="thirst"></div><span>0x</span>
-                </div>
-                <div class="ammo-box" id="stress">
-                    <div class="ammo-box-amount"></div>
-                    <i class="far fa-brain"></i>
-                    <div class="ammo-box2" id="stress"></div><span>0x</span>
                 </div>
             </div>
             <div class="inv-container">
@@ -79,6 +88,9 @@
                         <div class="inv-option-item" id="item-give"><p>GIVE</p></div>
                         <div class="inv-option-item" id="inv-close"><p>CLOSE</p></div>
                     </div>
+                    <div class="inv-settings">
+                        <div id="settings-btn" class="menu-open-btn"><i class="fas fa-cog"></i></div>
+                   </div>
                 </div>
                 <div class="oth-inv-container">
                     <div class="other-inventory" data-inventory="other">
