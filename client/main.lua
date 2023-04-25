@@ -487,15 +487,28 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
             if other then
                 currentOtherInventory = other.name
             end
-            SendNUIMessage({
-                action = "open",
-                inventory = inventory,
-                slots = Config.MaxInventorySlots,
-                other = other,
-                maxweight = Config.MaxInventoryWeight,
-                Ammo = PlayerAmmo,
-                maxammo = Config.MaximumAmmoValues,
-            })
+            player = PlayerId()
+                PlayerJob = QBCore.Functions.GetPlayerData()
+                SendNUIMessage({
+                    action = "open",
+                    inventory = inventory,
+                    slots = Config.MaxInventorySlots,
+                    other = other,
+                    maxweight = Config.MaxInventoryWeight,
+                    Ammo = PlayerAmmo,
+                    maxammo = Config.MaximumAmmoValues,
+                    id = GetPlayerServerId(player),
+                    playername = PlayerData.charinfo.firstname .. ' ' .. PlayerData.charinfo.lastname,
+                    helth = GetEntityHealth(PlayerPedId()),
+                    armor = GetPedArmour(PlayerPedId()),
+                    hunger = PlayerData.metadata["hunger"],
+                    thirst = PlayerData.metadata["thirst"],
+                    stress = PlayerData.metadata["stress"],
+                    playerMoney = PlayerData.money['cash'],
+                    playerBank = PlayerData.money['bank'],
+                    playerBlackMoney = PlayerData.money['crypto'],
+                    playerpayment = PlayerJob.job.payment,
+                })
             inInventory = true
         end
 
