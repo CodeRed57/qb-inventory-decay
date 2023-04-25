@@ -6,17 +6,19 @@ p {
 }
 
 :root {
-	--CMainGr: #f500003c;
+	--CMainGr: #00f5d83c;
 	--CSecondGr: #0000003a;
-	--infolineGr: #f50000;
-	--progressbar: #4101016d;
-	--progressbarsc: #4101016d;
-	--pro: #ff00006d;
-	--prosc: #ff00006d;
-	--durability: #5c02026d;
-	--durability2: #ff00006d;
-	--durability2sc: #ff00006d;
-	--durabilitysc: #4101016d;
+	--infolineGr: #00f5d0;
+	--progressbar: #01413c6d;
+	--progressbarsc: #0141386d;
+	--pro: #00ffc86d;
+	--prosc: #00ffc86d;
+	--durability: #025c536d;
+	--durability2: #00ffe56d;
+	--durability2sc: #00ffd06d;
+	--durabilitysc: #0141386d;
+
+	--iconcolor: #ffffff;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -135,7 +137,7 @@ body {
 }
 
 .combine-option-container {
-	display: none;
+display: none;
   position: absolute;
   margin: 0 auto;
   left: 0;
@@ -145,6 +147,81 @@ body {
   left: 3vh;
 
 }
+
+.inv-playerstats {
+	position: fixed;
+	top: 33.5vh;
+	left: 5.7vw;
+}
+
+.code2 {
+	color: var(--iconcolor);
+}
+
+.inv-playerstats2 {
+	position: fixed;
+	top: 33.5vh;
+	right: 5.7vw;
+}
+
+.code3 {
+	color: var(--iconcolor);
+}
+
+.code3 p {
+	color: var(--iconcolor);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.playerstat-icon {
+	position: relative;
+	font-size: 2.5vh !important;
+	text-align: center;
+	width: 3.5vw;
+	padding-top: 2vh;
+	font-weight: 600;
+	padding-bottom: 2vh;
+	border-radius: 20px;
+	top: -2px;
+	margin-bottom: 1.5vh;
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
+	box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
+  }
+
+.playerstat-text {
+	position: relative;
+	top: 1vh;
+	font-size: 1.1vh;
+	text-align: center;
+	font-weight: 600;
+	font-family: "Rajdhani", sans-serif;
+}
+.menu-open-btn {
+	position: relative;
+	width: 27px;
+	height: 27px;
+	background: linear-gradient(to bottom right, var(--CSecondGr), var(--CMainGr));
+	box-shadow: 0.05rem 0.05rem 0.05rem 0.05rem #00000084;
+	margin-top: 60px;
+	margin-left: 50px;
+	border-radius: 4px;
+	text-align: center;
+	float: left;
+	z-index: 9999999;
+}
+  .menu-open-btn:hover {
+	opacity: 0.9;
+}
+
+  .menu-open-btn i {
+	color: rgb(255, 255, 255);
+	font-size: 14px;
+	margin-top: 7px;
+  }
+
+
 
 .item-slot {
 	position: relative;
@@ -378,36 +455,39 @@ body {
   width: 32vw;
 }
 #progressbar {
-    border-radius: 20px;
-	width: 29vw;
-	margin-left: -20px;
+	width: 93%;
+	margin-left: 6%;
+	border-radius: 8px;
 	background: linear-gradient(to bottom right, var(--progressbar), var(--progressbarsc));
+	margin-bottom: 2vh;
    }
-   .pro {
-	background: linear-gradient(to bottom right, var(--pro), var(--prosc));
-	 width: 0%;
-     height: 17px;
-	 margin-top: 18px;
-     border-radius: 20px;
 
-   }
-   .pro1 {
+.pro {
 	background: linear-gradient(to bottom right, var(--pro), var(--prosc));
-     width: 0%;
-     height: 17px;
-	 margin-top: 18px;
-     border-radius: 20px;
-   }
+	width: 93%;
+	height: 2vh;
+	transition: width 1s;
+	border-radius: 8px;
+
+}
+.pro1 {
+	background: linear-gradient(to bottom right, var(--pro), var(--prosc));
+	width: 93%;
+	height: 2vh;
+	transition: width 1s;
+	border-radius: 8px;
+ }
 
 #player-inv-label {
 	position: relative;
-	color: var(--infolineGr);
+	color: white;
 	font-size: 18px;
 	font-family: "Rajdhani", sans-serif;
 	font-weight: bold;
 	letter-spacing: 0.1vh;
 	bottom: 15px;
 	float: left;
+	margin-top: 4.5%;
   }
 
 
@@ -417,9 +497,9 @@ body {
 	font-family: "Rajdhani", sans-serif;
 	font-weight: 400;
 	letter-spacing: 0.1vh;
-	float: right;
-	margin-right: 70%;
-	margin-top: -44px;
+	float: left;
+	margin-left: 80%;
+	margin-top: -0.3%;
   }
 
   #other-inv-label {
@@ -431,6 +511,7 @@ body {
 	letter-spacing: 0.1vh;
 	bottom: 15px;
 	float: left;
+	margin-top: 4.5%;
   }
 
   #other-inv-weight {
@@ -439,9 +520,9 @@ body {
 	font-family: "Rajdhani", sans-serif;
 	font-weight: 400;
 	letter-spacing: 0.1vh;
-	float: right;
-	margin-right: 70%;
-	margin-top: -44px;
+	float: left;
+	margin-left: 76%;
+	margin-top: 0%;
   }
 
   .player-inv-weight {
