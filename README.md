@@ -20,7 +20,6 @@
 
 ## Dependencies
 - [qb-core](https://github.com/qbcore-framework/qb-core)
-- [qb-logs](https://github.com/qbcore-framework/qb-logs) - For logging transfer and other history
 - [qb-traphouse](https://github.com/qbcore-framework/qb-traphouse) - Trap house system for qbcore
 - [qb-radio](https://github.com/qbcore-framework/qb-radio) - Radio system for communication
 - [qb-drugs](https://github.com/qbcore-framework/qb-drugs) -  Drugs and Weed Planting System
@@ -47,7 +46,6 @@
 - Add the following code to your server.cfg/resouces.cfg
 ```
 ensure qb-core
-ensure qb-logs
 ensure qb-inventory
 ensure qb-traphouse
 ensure qb-radio
@@ -452,3 +450,9 @@ Config.MaximumAmmoValues = {
 }
 
 ```
+## Credits:
+>### aj - aj-inventory
+>### loljoshie - lj-inventory
+>### qbcore - qb-inventory
+>### Jimathy - Toggle Item
+>### Treey and Jay - For introducing decay system
