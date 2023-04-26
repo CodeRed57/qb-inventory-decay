@@ -432,7 +432,7 @@ function FormatItemInfo(itemData) {
                 itemData.info.birthdate +
                 "</span></p><p><strong>Licenses: </strong><span>" +
                 itemData.info.type +
-                "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                "</span></p>"
             );
         } else if (itemData.name == "weaponlicense") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
@@ -461,7 +461,7 @@ function FormatItemInfo(itemData) {
         } else if (itemData.name == "harness") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
-                "<p>" + itemData.info.uses + " uses left.</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                "<p>" + itemData.info.uses + " uses left.</p>"
             );
         } else if (itemData.type == "weapon") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
@@ -486,7 +486,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.ammo +
                     "</span></p><p><strong>Attachments: </strong><span>" +
                     attachmentString +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</span></p>"
                 );
             } else {
                 $(".item-info-description").html(
@@ -496,7 +496,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.ammo +
                     "</span></p><p>" +
                     itemData.description +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p>"
                 );
             }
         } else if (itemData.name == "filled_evidence_bag") {
@@ -515,7 +515,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p>"
                 );
             } else if (itemData.info.type == "blood") {
                 $(".item-info-description").html(
@@ -529,7 +529,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             } else if (itemData.info.type == "fingerprint") {
                 $(".item-info-description").html(
@@ -541,7 +541,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.street +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             } else if (itemData.info.type == "dna") {
                 $(".item-info-description").html(
@@ -551,7 +551,7 @@ function FormatItemInfo(itemData) {
                     itemData.info.dnalabel +
                     "</span></p><br /><p>" +
                     itemData.description +
-                    "</span></p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
+                    "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>"
                 );
             }
         } else if (
