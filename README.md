@@ -53,10 +53,8 @@ ensure qb-drugs
 ensure qb-shops
 ```
 ## Credits:
->### loljoshie - lj-inventory
->### qbcore - qb-inventory
->### Jimathy - Toggle Item
->### Treey and Jay - For introducing decay system
+- [i-kulgu](https://github.com/i-kulgu/qb-inventory-decay)
+- [qb-core](https://github.com/qbcore-framework/qb-core)
 
 ## Configuration
 ```
