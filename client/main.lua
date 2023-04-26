@@ -350,12 +350,6 @@ local function CreateItemDrop(index)
 	end
 end
 
-local function toggleItem(give, item, amount, info)
-    return TriggerServerEvent("inventory:server:toggleItem", give, item, amount, info)
-end
-
-exports("toggleItem", toggleItem)
-
 --#endregion Functions
 
 --#region Events
@@ -412,13 +406,11 @@ RegisterNetEvent('inventory:client:CheckOpenState', function(type, id, label)
     end
 end)
 
-RegisterNetEvent('inventory:client:ItemBox', function(itemData, type, amount)
-    amount = amount or 1
+RegisterNetEvent('inventory:client:ItemBox', function(itemData, type)
     SendNUIMessage({
         action = "itemBox",
         item = itemData,
-        type = type,
-        itemAmount = amount
+        type = type
     })
 end)
 
@@ -463,11 +455,11 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
                 if other then
                     currentOtherInventory = other.name
                 end
-            QBCore.Functions.TriggerCallback('inventory:server:ConvertQuality', function(data)
-                inventory = data.inventory
-                other = data.other
                 player = PlayerId()
                 PlayerJob = QBCore.Functions.GetPlayerData()
+                QBCore.Functions.TriggerCallback('inventory:server:ConvertQuality', function(data)
+                inventory = data.inventory
+                other = data.other
                 SendNUIMessage({
                     action = "open",
                     inventory = inventory,
@@ -489,7 +481,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
                     playerpayment = PlayerJob.job.payment,
                 })
                 inInventory = true
-            end, inventory, other)
+            end,inventory,other)
             end, function() -- Play When Cancel
             end)
         else
@@ -499,11 +491,11 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
             if other then
                 currentOtherInventory = other.name
             end
-            QBCore.Functions.TriggerCallback('inventory:server:ConvertQuality', function(data)
+            player = PlayerId()
+                PlayerJob = QBCore.Functions.GetPlayerData()
+                QBCore.Functions.TriggerCallback('inventory:server:ConvertQuality', function(data)
                 inventory = data.inventory
                 other = data.other
-                player = PlayerId()
-                PlayerJob = QBCore.Functions.GetPlayerData()
                 SendNUIMessage({
                     action = "open",
                     inventory = inventory,
@@ -524,10 +516,20 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
                     playerBlackMoney = PlayerData.money['crypto'],
                     playerpayment = PlayerJob.job.payment,
                 })
-            end, inventory, other)
             inInventory = true
+        end,inventory,other)
         end
     end
+end)
+
+RegisterNetEvent('inventory:client:UpdateOtherInventory', function(items, isError)
+    SendNUIMessage({
+        action = "update",
+        inventory = items,
+        maxweight = Config.MaxInventoryWeight,
+        slots = Config.MaxInventorySlots,
+        error = isError,
+    })
 end)
 
 RegisterNetEvent('inventory:client:UpdatePlayerInventory', function(isError)
