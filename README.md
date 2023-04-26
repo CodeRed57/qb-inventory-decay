@@ -53,7 +53,6 @@ ensure qb-drugs
 ensure qb-shops
 ```
 ## Credits:
->### aj - aj-inventory
 >### loljoshie - lj-inventory
 >### qbcore - qb-inventory
 >### Jimathy - Toggle Item
