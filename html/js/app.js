@@ -156,7 +156,7 @@ $(document).on("click", ".item-slot", function(e) {
             if (ItemData.name.split("_")[0] == "weapon") {
                 if (!$("#weapon-attachments").length) {
                     $(".inv-options-list").append(
-                        '<div class="inv-option-item" id="weapon-attachments"><p>ATTACHMENTS</p></div>'
+                        '<div class="inv-option-item" id="weapon-attachments"><i class="far fa-box"></i></div>'
                     );
                     $("#weapon-attachments").hide().fadeIn(250);
                     ClickedItemData = ItemData;
@@ -2886,7 +2886,7 @@ var requiredItemOpen = false;
                     break;
                 case "RobMoney":
                     $(".inv-options-list").append(
-                        '<div class="inv-option-item" id="rob-money"><p>TAKE MONEY</p></div>'
+                         '<div class="inv-option-item" id="rob-money"><i class="fas fa-dollar-sign"></i></div>'
                     );
                     $("#rob-money").data("TargetId", event.data.TargetId);
                     break;
